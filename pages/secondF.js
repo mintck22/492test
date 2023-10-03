@@ -1,16 +1,27 @@
 import Head from "next/head";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Header from "@/component/Header";
+import axios from "axios"; // Import axios or your preferred HTTP library
 
 export default function secondF() {
-  const [seat, setSeat] = useState("");
-  const handleChange = (event) => {
-    // 👇 Get input value from "event"
-    setSeat(event.target.value);
-  };
+  const [data, setData] = useState(null); // State to store the fetched data
+
+  useEffect(() => {
+    // Function to fetch data
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/api/human-count"); // Replace with your API route
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData(); // Call the fetch function when the component mounts
+  }, []);
 
   return (
     <>
@@ -122,13 +133,17 @@ export default function secondF() {
 
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <span className={styles.tab}>จำนวนคนที่เข้าใช้บริการ</span>
-          <span className={styles.tab}>{data.HumanCount.N}</span>
+          <span className={styles.tab}>{data?.HumanCount?.N || "-"}</span>{" "}
+          {/* Display data.HumanCount.N if available */}
           <span className={styles.tab}>คน</span>
         </div>
 
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <span className={styles.tab}>จำนวนที่นั่งที่ว่าง</span>
-          <span className={styles.tab}>50 - {data.HumanCount.N}</span>
+          <span className={styles.tab}>
+            50 - {data?.HumanCount?.N || "-"}
+          </span>{" "}
+          {/* Display data.HumanCount.N if available */}
           <span className={styles.tab}>ที่นั่ง</span>
         </div>
       </div>
