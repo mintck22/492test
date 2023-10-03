@@ -3,8 +3,8 @@ import AWS from "aws-sdk";
 // Initialize the AWS DynamoDB client
 AWS.config.update({
   region: "ap-southeast-1", // Replace with your desired AWS region
-  accessKeyId: process.env.AWS_ACCESS_KEY, // Replace with your AWS access key
-  secretAccessKey: process.env.AWS_SECRET_KEY, // Replace with your AWS secret key
+  accessKeyId: "AKIA5MHKPM36GRLA7SYF", // Replace with your AWS access key
+  secretAccessKey: "tzgx7Z/0EzRSarnPGIfBKCoEFCdedPYcMHqDSNA9", // Replace with your AWS secret key
 });
 
 const dynamoDB = new AWS.DynamoDB.DocumentClient();
