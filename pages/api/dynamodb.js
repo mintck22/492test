@@ -1,10 +1,16 @@
-import { DynamoDB } from "aws-sdk";
+import AWS from "aws-sdk";
+
+// Initialize the AWS DynamoDB client
+AWS.config.update({
+  region: "ap-southeast-1", // Replace with your desired AWS region
+  accessKeyId: process.env.AWS_ACCESS_KEY, // Replace with your AWS access key
+  secretAccessKey: process.env.AWS_SECRET_KEY, // Replace with your AWS secret key
+});
+
+const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 export default async (req, res) => {
   try {
-    // Initialize the AWS DynamoDB client
-    const dynamoDB = new DynamoDB({ region: "ap-southeast-1" });
-
     // Get the ImageName parameter from the request query (assuming it's passed as a query parameter)
     const { imageName } = req.query;
 
@@ -12,12 +18,12 @@ export default async (req, res) => {
     const params = {
       TableName: "camera1", // Replace with your DynamoDB table name
       Key: {
-        ImageName: { S: imageName }, // Use the provided imageName as the key
+        ImageName: imageName, // Use the provided imageName as the key
       },
     };
 
     // Perform the DynamoDB query
-    const result = await dynamoDB.getItem(params).promise();
+    const result = await dynamoDB.get(params).promise();
 
     // Check if the item exists
     if (!result.Item) {
