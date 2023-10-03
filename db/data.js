@@ -1,7 +1,30 @@
-use("mongodbVSCodePlaygroundDB");
+import { DynamoDB } from "aws-sdk";
 
-// Insert a few documents into the sales collection.
-db.getCollection("camera").insertMany([
-  { cam: "1", img_name: "esp32_001", human: 30 },
-  { cam: "1", img_name: "esp32_002", human: 28 },
-]);
+// Create a DynamoDB instance
+const dynamoDB = new DynamoDB({ region: "ap-southeast-1" }); // Replace with your desired AWS region
+
+// Define the DynamoDB table name
+const tableName = "camera1"; // Replace with your DynamoDB table name
+
+// Function to insert data into DynamoDB
+export async function insertData(data) {
+  try {
+    // Create parameters for the DynamoDB putItem operation
+    const params = {
+      TableName: tableName,
+      Item: {
+        ImageName: { S: data.ImageName },
+        HumanCount: { N: data.HumanCount.toString() },
+        UploadTime: { S: data.UploadTime },
+      },
+    };
+
+    // Perform the DynamoDB putItem operation
+    await dynamoDB.putItem(params).promise();
+
+    console.log("Data inserted into DynamoDB successfully");
+  } catch (error) {
+    console.error("Error inserting data into DynamoDB:", error);
+    throw error;
+  }
+}

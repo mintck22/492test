@@ -1,4 +1,3 @@
-// pages/api/dynamodb.js
 import { DynamoDB } from "aws-sdk";
 
 export default async (req, res) => {
@@ -6,14 +5,14 @@ export default async (req, res) => {
     // Initialize the AWS DynamoDB client
     const dynamoDB = new DynamoDB({ region: "ap-southeast-1" });
 
+    // Get the ImageName parameter from the request query (assuming it's passed as a query parameter)
+    const { imageName } = req.query;
+
     // Create parameters for the DynamoDB query
     const params = {
-      TableName: "cmulib",
+      TableName: "camera1", // Replace with your DynamoDB table name
       Key: {
-        // Define your key attributes here
-        // For example:
-        // id: { S: 'your-key-value' },
-        imageId: { S: "img1" },
+        ImageName: { S: imageName }, // Use the provided imageName as the key
       },
     };
 

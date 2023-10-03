@@ -122,13 +122,13 @@ export default function secondF() {
 
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <span className={styles.tab}>จำนวนคนที่เข้าใช้บริการ</span>
-          <span className={styles.tab}>0</span>
+          <span className={styles.tab}>{data.HumanCount.N}</span>
           <span className={styles.tab}>คน</span>
         </div>
 
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <span className={styles.tab}>จำนวนที่นั่งที่ว่าง</span>
-          <span className={styles.tab}>0</span>
+          <span className={styles.tab}>50 - {data.HumanCount.N}</span>
           <span className={styles.tab}>ที่นั่ง</span>
         </div>
       </div>
