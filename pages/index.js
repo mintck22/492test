@@ -9,17 +9,14 @@ export default function Home() {
   const [data, setData] = useState(null);
 
   const fetchData = () => {
-    fetch(
-      "https://in2o5ci219.execute-api.ap-southeast-1.amazonaws.com/human-counts/data",
-      {
-        method: "GET",
-        headers: {
-          // Add any headers you need, such as authentication headers
-          // Example:
-          // "Authorization": "Bearer yourAccessToken",
-        },
-      }
-    )
+    fetch("/api/dynamodb", {
+      method: "GET",
+      headers: {
+        // Add any headers you need, such as authentication headers
+        // Example:
+        // "Authorization": "Bearer yourAccessToken",
+      },
+    })
       .then((response) => response.json())
       .then((result) => setData(result))
       .catch((error) => console.error("Error:", error));
