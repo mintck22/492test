@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [data, setData] = useState(null);
 
-  useEffect(() => {
+  const fetchData = () => {
     fetch(
       "https://in2o5ci219.execute-api.ap-southeast-1.amazonaws.com/human-counts/data",
       {
@@ -23,6 +23,21 @@ export default function Home() {
       .then((response) => response.json())
       .then((result) => setData(result))
       .catch((error) => console.error("Error:", error));
+  };
+
+  useEffect(() => {
+    // Fetch data initially
+    fetchData();
+
+    // Fetch data every 1 minute
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 60000); // 60000 milliseconds = 1 minute
+
+    // Cleanup interval when the component unmounts
+    return () => {
+      clearInterval(intervalId);
+    };
   }, []);
 
   // Calculate the difference between 121 and HumanCount
