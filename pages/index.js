@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     fetch(
-      "https://in2o5ci219.execute-api.ap-southeast-1.amazonaws.com/human-counts",
+      "https://in2o5ci219.execute-api.ap-southeast-1.amazonaws.com/human-counts/data",
       {
         method: "GET",
         headers: {
