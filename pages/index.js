@@ -9,11 +9,24 @@ export default function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("/api/dynamodb")
+    fetch(
+      "https://in2o5ci219.execute-api.ap-southeast-1.amazonaws.com/human-counts",
+      {
+        method: "GET",
+        headers: {
+          // Add any headers you need, such as authentication headers
+          // Example:
+          // "Authorization": "Bearer yourAccessToken",
+        },
+      }
+    )
       .then((response) => response.json())
       .then((result) => setData(result))
       .catch((error) => console.error("Error:", error));
   }, []);
+
+  // Calculate the difference between 121 and HumanCount
+  const availableSeats = data ? 121 - data.HumanCount : "Loading...";
 
   return (
     <>
@@ -53,7 +66,7 @@ export default function Home() {
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <span className={styles.tab}>จำนวนคนที่เข้าใช้บริการ</span>
           {data ? (
-            <span className={styles.tab}>{data.HumanCount.N}</span>
+            <span className={styles.tab}>{data.HumanCount}</span>
           ) : (
             <span className={styles.tab}>Loading...</span>
           )}
@@ -62,7 +75,7 @@ export default function Home() {
 
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <span className={styles.tab}>จำนวนที่นั่งที่ว่าง</span>
-          <span className={styles.tab}>121</span>
+          <span className={styles.tab}>{availableSeats}</span>
           <span className={styles.tab}>ที่นั่ง</span>
         </div>
       </div>
