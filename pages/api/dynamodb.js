@@ -11,27 +11,33 @@ const dynamoDB = new AWS.DynamoDB.DocumentClient();
 
 export default async (req, res) => {
   try {
-    // Get the ImageName parameter from the request query (assuming it's passed as a query parameter)
-    const { imageName } = req.query;
-
-    // Create parameters for the DynamoDB query
+    // Define the DynamoDB parameters for the query
     const params = {
       TableName: "camera1", // Replace with your DynamoDB table name
-      Key: {
-        ImageName: imageName, // Use the provided imageName as the key
-      },
+      ScanIndexForward: false, // Sort in descending order
+      Limit: 1, // Limit the result to 1 item (the newest)
+      KeyConditionExpression: "attribute_exists(UploadTime)", // Ensure UploadTime exists
+      ProjectionExpression: "ImageName, HumanCount, UploadTime", // Specify the attributes you want
     };
 
-    // Perform the DynamoDB query
-    const result = await dynamoDB.get(params).promise();
+    // Use the query operation to retrieve the newest item from DynamoDB
+    const queryResult = await dynamoDB.query(params).promise();
 
-    // Check if the item exists
-    if (!result.Item) {
-      return res.status(404).json({ message: "Item not found" });
+    if (queryResult.Items.length === 0) {
+      // No items found
+      return res.status(404).json({ message: "No items found" });
     }
 
-    // Return the item data as JSON
-    res.status(200).json(result.Item);
+    const newestItem = queryResult.Items[0];
+
+    // Access the HumanCount attribute
+    const humanCount = newestItem.HumanCount.N;
+
+    // Convert it to a number if needed (it's currently a string)
+    const humanCountNumber = parseInt(humanCount, 10);
+
+    // Return the HumanCount as JSON
+    res.status(200).json({ HumanCount: humanCountNumber });
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ message: "Internal Server Error" });
