@@ -16,19 +16,19 @@ export default async (req, res) => {
       TableName: "camera1", // Replace with your DynamoDB table name
       ScanIndexForward: false, // Sort in descending order
       Limit: 1, // Limit the result to 1 item (the newest)
-      KeyConditionExpression: "attribute_exists(UploadTime)", // Ensure UploadTime exists
       ProjectionExpression: "HumanCount", // Specify the attributes you want (only HumanCount in this case)
+      FilterExpression: "attribute_exists(UploadTime)", // Filter for items where UploadTime exists
     };
 
-    // Use the query operation to retrieve the newest item from DynamoDB
-    const queryResult = await dynamoDB.query(params).promise();
+    // Use the scan operation to retrieve the newest item from DynamoDB
+    const scanResult = await dynamoDB.scan(params).promise();
 
-    if (queryResult.Items.length === 0) {
+    if (scanResult.Items.length === 0) {
       // No items found
       return res.status(404).json({ message: "No items found" });
     }
 
-    const newestItem = queryResult.Items[0];
+    const newestItem = scanResult.Items[0];
 
     // Access the HumanCount attribute
     const humanCount = newestItem.HumanCount;
