@@ -32,7 +32,7 @@
 
 .f2a {
   position: absolute;
-  top: 260px;
+  top: 320px;
   left: 525px;
   font-weight: bold;
   font-size: 20px;
@@ -40,8 +40,16 @@
 
 .f2b {
   position: absolute;
-  top: 250px;
-  left: 735px;
+  top: 80px;
+  left: 710px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.f2c {
+  position: absolute;
+  top: 365px;
+  left: 867px;
   font-weight: bold;
   font-size: 20px;
 }

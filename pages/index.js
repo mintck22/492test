@@ -72,6 +72,7 @@ export default function Home() {
         </div>
 
         <div style={{ textAlign: "center" }}>
+          <h2 style={{ padding: "1rem" }}>Check Available Seats</h2>
           <Image src="/map1.jpg" width={500} height={333} />
         </div>
 
@@ -87,7 +88,8 @@ export default function Home() {
 
         <div style={{ textAlign: "center", padding: "1rem" }}>
           <span className={styles.tab}>จำนวนที่นั่งที่ว่าง</span>
-          <span className={styles.tab}>{availableSeats}</span>
+          <span className={styles.tab}>121</span>
+          {/*availableSeats*/}
           <span className={styles.tab}>ที่นั่ง</span>
         </div>
       </div>
