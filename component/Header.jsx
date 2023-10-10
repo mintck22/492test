@@ -21,9 +21,9 @@ export default function Header() {
         >
           Chiang Mai University Library
         </span>
-        <Link href="/login">
+        {/* <Link href="/login">
           <span style={{ marginLeft: "900px" }}>Staff login</span>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

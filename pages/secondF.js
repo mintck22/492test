@@ -200,7 +200,8 @@ export default function secondF() {
                 width: "100px",
               }}
             >
-              {availableSeats3}/{camSeats3}
+              {availableSeats3}
+              {/* /{camSeats3} */}
             </div>
 
             <div
@@ -226,7 +227,8 @@ export default function secondF() {
                 height: "70px",
               }}
             >
-              {availableSeats}/{camSeats}
+              {availableSeats}
+              {/* /{camSeats} */}
             </div>
 
             <div
@@ -270,7 +272,8 @@ export default function secondF() {
                 width: "90px",
               }}
             >
-              {availableSeats2}/{camSeats2}
+              {availableSeats2}
+              {/* /{camSeats2} */}
             </div>
           </div>
         </div>
@@ -290,9 +293,9 @@ export default function secondF() {
           <span className={styles.tab}>ที่นั่ง</span>
         </div>
 
-        <div style={{ textAlign: "center", padding: "1rem" }}>
+        {/* <div style={{ textAlign: "center", padding: "1rem" }}>
           <Graph />
-        </div>
+        </div> */}
       </div>
     </>
   );
