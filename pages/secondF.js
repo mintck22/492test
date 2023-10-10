@@ -96,7 +96,7 @@ export default function secondF() {
   const camSeats3 = 12;
 
   const availableSeats = data ? camSeats - data.HumanCount : "Loading...";
-  const availableSeats2 = data2 ? 24 - data2.HumanCount : "Loading...";
+  const availableSeats2 = data2 ? camSeats2 - data2.HumanCount : "Loading...";
   const availableSeats3 = data3 ? camSeats3 - data3.HumanCount : "Loading...";
 
   const human = data ? 0 + data.HumanCount : "Loading...";
@@ -110,192 +110,210 @@ export default function secondF() {
     <>
       <Head>
         <title>CMUL Check Seats 2nd Floor</title>
+        <link rel="icon" href="/cmu_logo.png" />
       </Head>
 
       <Header />
 
-      <div
-        className={styles.border}
-        style={{
-          // width: "600px",
-          // display: "inline-block",
-          //textAlign: "center",
-          marginLeft: "10rem",
-          marginRight: "10rem",
-          marginTop: "1rem",
-          padding: "2rem",
-        }}
-      >
-        {/* style={{ display: "inline-block", marginRight: "20px" }} */}
-        <div style={{ padding: "2rem", textAlign: "center" }}>
-          <Link href="/">
-            <span style={{ fontSize: "20px", fontWeight: "bold" }}>
-              1st Floor{" "}
-            </span>
-          </Link>
-
-          <span
-            className={styles.tab}
-            style={{ fontSize: "20px", fontWeight: "bold", color: "blue" }}
+      <div className="d-flex justify-content-center p-3">
+        <div
+          className={styles.border}
+          style={{
+            width: "1000px",
+            padding: "2rem",
+          }}
+        >
+          <div
+            className="d-grid gap-2 d-md-block"
+            style={{ padding: "2rem", textAlign: "center" }}
           >
-            2nd Floor
-          </span>
-        </div>
+            <Link href="/">
+              <button
+                type="button"
+                className="btn btn-primary me-3"
+                style={{ fontSize: "1rem", fontWeight: "bold" }}
+              >
+                1st Floor
+              </button>
+            </Link>
 
-        {/* <input type="text" id="seat" name="seat" onChange={handleChange} /> {seat}*/}
+            <button
+              type="button"
+              className="btn btn-outline-primary me-3"
+              disabled
+              style={{ fontSize: "1rem", fontWeight: "bold" }}
+            >
+              2nd Floor
+            </button>
 
-        <div style={{ textAlign: "center" }}>
-          <h2 style={{ padding: "1rem" }}>Check Available Seats</h2>
-          <Image src="/map2.jpg" width={500} height={333} />
-          <div>
-            <div
-              className={styles.f2a}
-              style={{
-                backgroundColor: "grey",
-                padding: "10px",
-                width: "100px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2a}
-              style={{
-                backgroundColor: "grey",
-                marginTop: "50px",
-                padding: "10px",
-                width: "100px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2a}
-              style={{
-                backgroundColor: "grey",
-                marginTop: "100px",
-                padding: "10px",
-                width: "100px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2a}
-              style={{
-                backgroundColor: "grey",
-                marginTop: "150px",
-                padding: "10px",
-                width: "100px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2a}
-              style={{
-                backgroundColor: "green",
-                marginTop: "200px",
-                padding: "10px",
-                width: "100px",
-              }}
-            >
-              {availableSeats3}
-              {/* /{camSeats3} */}
-            </div>
+            <Link href="/thirdF">
+              <button
+                type="button"
+                className="btn btn-primary"
+                style={{ fontSize: "1rem", fontWeight: "bold" }}
+              >
+                3rd Floor
+              </button>
+            </Link>
+          </div>
 
-            <div
-              className={styles.f2b}
-              style={{
-                backgroundColor: "grey",
-                marginTop: "200px",
-                padding: "10px",
-                width: "50px",
-                height: "70px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2b}
-              style={{
-                backgroundColor: "orange",
-                marginTop: "200px",
-                marginLeft: "65px",
-                padding: "5px",
-                width: "50px",
-                height: "70px",
-              }}
-            >
-              {availableSeats}
-              {/* /{camSeats} */}
-            </div>
+          <h2
+            className="d-flex justify-content-center mx-auto"
+            style={{ padding: "1rem" }}
+          >
+            Check Available Seats
+          </h2>
+          {/* <input type="text" id="seat" name="seat" onChange={handleChange} /> {seat}textAlign: "center"*/}
 
-            <div
-              className={styles.f2c}
-              style={{
-                backgroundColor: "grey",
-                padding: "10px",
-                width: "90px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2c}
-              style={{
-                backgroundColor: "grey",
-                marginTop: "50px",
-                padding: "10px",
-                width: "90px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2c}
-              style={{
-                backgroundColor: "grey",
-                marginTop: "100px",
-                padding: "10px",
-                width: "90px",
-              }}
-            >
-              -
-            </div>
-            <div
-              className={styles.f2c}
-              style={{
-                backgroundColor: "green",
-                marginTop: "150px",
-                padding: "10px",
-                width: "90px",
-              }}
-            >
-              {availableSeats2}
-              {/* /{camSeats2} */}
+          <div
+            className="d-flex justify-content-center mx-auto"
+            style={{ width: "700px" }}
+          >
+            <div className={styles.buttonOverlay}>
+              <img className="img-fluid" src="/map2.jpg" />
+              <button
+                type="button"
+                className="btn btn-dark p-2"
+                style={{
+                  width: "8rem",
+                  height: "4rem",
+                  marginTop: "3rem",
+                  fontSize: "2rem",
+                }}
+              >
+                -
+              </button>
+              <button
+                type="button"
+                className="btn btn-dark p-2"
+                style={{
+                  width: "8rem",
+                  height: "4rem",
+                  marginTop: "8rem",
+                  fontSize: "2rem",
+                }}
+              >
+                -
+              </button>
+              <button
+                type="button"
+                className="btn btn-dark p-2"
+                style={{
+                  width: "8rem",
+                  height: "4rem",
+                  marginTop: "13rem",
+                  fontSize: "2rem",
+                }}
+              >
+                -
+              </button>
+              <button
+                type="button"
+                className="btn btn-success p-2"
+                style={{
+                  width: "8rem",
+                  height: "4rem",
+                  marginTop: "18rem",
+                  fontSize: "2rem",
+                }}
+              >
+                {availableSeats3}
+              </button>
+
+              {/* zone B */}
+              <button
+                type="button"
+                className="btn btn-dark p-2"
+                style={{
+                  width: "4rem",
+                  height: "5rem",
+                  marginLeft: "14rem",
+                  fontSize: "2rem",
+                }}
+              >
+                -
+              </button>
+              <button
+                type="button"
+                className="btn btn-warning p-2"
+                style={{
+                  width: "4rem",
+                  height: "5rem",
+                  marginLeft: "19rem",
+                  fontSize: "2rem",
+                }}
+              >
+                {availableSeats}
+              </button>
+
+              {/* zone C */}
+              <button
+                type="button"
+                className="btn btn-dark p-2"
+                style={{
+                  width: "8rem",
+                  height: "4rem",
+                  marginTop: "8rem",
+                  marginLeft: "29.2rem",
+                  fontSize: "2rem",
+                }}
+              >
+                -
+              </button>
+              <button
+                type="button"
+                className="btn btn-dark p-2"
+                style={{
+                  width: "8rem",
+                  height: "4rem",
+                  marginTop: "13rem",
+                  marginLeft: "29.2rem",
+                  fontSize: "2rem",
+                }}
+              >
+                -
+              </button>
+              <button
+                type="button"
+                className="btn btn-success p-2"
+                style={{
+                  width: "8rem",
+                  height: "4rem",
+                  marginTop: "18rem",
+                  marginLeft: "29.2rem",
+                  fontSize: "2rem",
+                }}
+              >
+                {availableSeats2}
+              </button>
             </div>
           </div>
-        </div>
 
-        <div style={{ textAlign: "center", padding: "1rem" }}>
-          <span>จำนวนคนที่เข้าใช้บริการ</span>
-          <span className={styles.tab}>{totalHuman}</span>
-          {/* <span className={styles.tab}>{data?.HumanCount?.N || "-"}</span>{" "}
+          <div className="d-flex justify-content-center mx-auto my-4">
+            <span style={{ fontSize: "1.4rem" }}>Number of people :</span>
+            <span className={styles.tab} style={{ fontSize: "1.4rem" }}>
+              {totalHuman}
+            </span>
+            {/* <span className={styles.tab}>{data?.HumanCount?.N || "-"}</span>{" "}
           Display data.HumanCount.N if available */}
-          <span className={styles.tab}>คน</span>
-        </div>
+            {/* <span className={styles.tab}>people</span> */}
+          </div>
 
-        <div style={{ textAlign: "center", padding: "1rem" }}>
-          <span>จำนวนที่นั่งที่ว่าง</span>
-          <span className={styles.tab}> {totalSeats}</span>{" "}
-          {/* Display data.HumanCount.N if available    50 - {data?.HumanCount?.N || "-"}*/}
-          <span className={styles.tab}>ที่นั่ง</span>
-        </div>
+          <div className="d-flex justify-content-center mx-auto my-2">
+            <span style={{ fontSize: "1.4rem" }}>
+              Number of available seats :
+            </span>
+            <span className={styles.tab} style={{ fontSize: "1.4rem" }}>
+              {totalSeats}
+            </span>
+            {/* Display data.HumanCount.N if available    50 - {data?.HumanCount?.N || "-"}*/}
+            {/* <span className={styles.tab}>ที่นั่ง</span> */}
+          </div>
 
-        {/* <div style={{ textAlign: "center", padding: "1rem" }}>
+          {/* <div style={{ textAlign: "center", padding: "1rem" }}>
           <Graph />
         </div> */}
+        </div>
       </div>
     </>
   );

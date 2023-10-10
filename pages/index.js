@@ -44,53 +44,89 @@ export default function Home() {
     <>
       <Head>
         <title>CMUL Check Seats 1st Floor</title>
+        <link rel="icon" href="/cmu_logo.png" />
       </Head>
 
       <Header />
 
-      <div
-        className={styles.border}
-        style={{
-          marginLeft: "10rem",
-          marginRight: "10rem",
-          marginTop: "1rem",
-          padding: "2rem",
-        }}
-      >
-        <div style={{ padding: "2rem", textAlign: "center" }}>
-          <span style={{ fontSize: "20px", fontWeight: "bold", color: "blue" }}>
-            1st Floor{" "}
-          </span>
-          <Link href="/secondF">
-            <span
-              className={styles.tab}
-              style={{ fontSize: "20px", fontWeight: "bold" }}
+      <div className="d-flex justify-content-center p-3">
+        <div
+          className={styles.border}
+          style={{
+            width: "1000px",
+            padding: "2rem",
+          }}
+        >
+          <div
+            className="d-grid gap-2 d-md-block"
+            style={{ padding: "2rem", textAlign: "center" }}
+          >
+            <button
+              type="button"
+              className="btn btn-outline-primary me-3"
+              disabled
+              style={{ fontSize: "1rem", fontWeight: "bold" }}
             >
-              2nd Floor
-            </span>
-          </Link>
-        </div>
+              1st Floor
+            </button>
 
-        <div style={{ textAlign: "center" }}>
-          <h2 style={{ padding: "1rem" }}>Check Available Seats</h2>
-          <Image src="/map1.jpg" width={500} height={333} />
-        </div>
+            <Link href="/secondF">
+              <button
+                type="button"
+                className="btn btn-primary me-3"
+                style={{ fontSize: "1rem", fontWeight: "bold" }}
+              >
+                2nd Floor
+              </button>
+            </Link>
 
-        <div style={{ textAlign: "center", padding: "1rem" }}>
-          <span className={styles.tab}>จำนวนคนที่เข้าใช้บริการ</span>
-          {data ? (
-            <span className={styles.tab}>{data.HumanCount}</span>
-          ) : (
-            <span className={styles.tab}>Loading...</span>
-          )}
-          <span className={styles.tab}>คน</span>
-        </div>
+            <Link href="/thirdF">
+              <button
+                type="button"
+                className="btn btn-primary"
+                style={{ fontSize: "1rem", fontWeight: "bold" }}
+              >
+                3rd Floor
+              </button>
+            </Link>
+          </div>
 
-        <div style={{ textAlign: "center", padding: "1rem" }}>
-          <span className={styles.tab}>จำนวนที่นั่งที่ว่าง</span>
-          <span className={styles.tab}>121</span>
-          {/*availableSeats*/}
-          <span className={styles.tab}>ที่นั่ง</span>
+          <h2
+            className="d-flex justify-content-center mx-auto"
+            style={{ padding: "1rem" }}
+          >
+            Check Available Seats
+          </h2>
+
+          <div
+            className="d-flex justify-content-center mx-auto"
+            style={{ width: "700px" }}
+          >
+            <img className="img-fluid" src="/map1.jpg" />
+          </div>
+
+          <div
+            className="d-flex justify-content-center mx-auto my-4"
+            style={{ fontSize: "1.4rem" }}
+          >
+            <span className={styles.tab}>Number of people :</span>
+            {data ? (
+              <span className={styles.tab}>{data.HumanCount}</span>
+            ) : (
+              <span className={styles.tab}>Loading...</span>
+            )}
+            {/* <span className={styles.tab}>คน</span> */}
+          </div>
+
+          <div
+            className="d-flex justify-content-center mx-auto my-2"
+            style={{ fontSize: "1.4rem" }}
+          >
+            <span className={styles.tab}>Number of available seats :</span>
+            <span className={styles.tab}>121</span>
+            {/*availableSeats*/}
+            {/* <span className={styles.tab}>ที่นั่ง</span> */}
+          </div>
         </div>
       </div>
     </>

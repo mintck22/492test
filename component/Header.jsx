@@ -8,14 +8,15 @@ export default function Header() {
       <div
         style={{
           // backgroundColor: "mediumpurple",
-          padding: "0.8rem",
+          padding: "0.3rem",
         }}
         className={styles.bg}
       >
+        <img src="/cmu_logo.png" width={80} className="p-2 ms-2" />
         <span
           style={{
-            marginLeft: "50px",
-            fontSize: "30px",
+            marginLeft: "1rem",
+            fontSize: "2rem",
             fontWeight: "bold",
           }}
         >
