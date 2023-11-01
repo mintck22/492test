@@ -1,17 +1,15 @@
-# Project492
+# Web application to find available seats in the Chiang Mai University Library
 
-## Description
+<!-- ## Description -->
 
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
+- [Environment Variables](#environment-variables)
+- [Demo](#demo)
 - [Contact](#contact)
 
 ## Installation
-
-Provide instructions on how to install your project. Include any prerequisites or dependencies that need to be installed, and the installation steps. For example:
 
 ```
 # Clone the repository
@@ -22,24 +20,25 @@ cd project492
 
 # Install dependencies
 npm install
+npm install aws-sdk
+npm run dev
 ```
 
-## Usage
+Open http://localhost:3000 with your browser to see the result.
 
-Explain how to use your project. Include examples, code snippets, and any relevant information that users need to get started. You can also include screenshots or GIFs to showcase your project in action.
+## Environment Variables
 
 ```
-# Provide usage examples here
+aws_access_key=
+aws_secret_key=
+aws_region=
 ```
 
-## Contributing
+## Demo
 
-Tell others how they can contribute to your project. Include guidelines for submitting issues and pull requests. You can also specify any coding standards, commit message formats, and other relevant information for contributors.
+Deploy on Vercel: https://492test-git-master-mintck22.vercel.app/
 
 ## Contact
 
-If you have questions or need to get in touch with the project maintainer, you can reach out via email at [your@email.com]. You can also find me on GitHub at [GitHub Profile](https://github.com/mintck22).
-
-```
-
-```
+[GitHub Profile](https://github.com/mintck22).
+[GitHub Profile](https://github.com/Erzengel792).
