@@ -4,12 +4,21 @@
 
 ## Table of Contents
 
-- [Installation](#installation)
+- [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
 - [Demo](#demo)
 - [Contact](#contact)
 
-## Installation
+## Getting Started
+
+Prerequisites
+
+- AWS account
+- ESP32-CAM with OV2640
+- Arduino IDE
+- Python
+
+Installation
 
 ```
 # Clone the repository
@@ -21,6 +30,9 @@ cd project492
 # Install dependencies
 npm install
 npm install aws-sdk
+npm install bootstrap
+npm install react
+npm install react-dom
 npm run dev
 ```
 
@@ -40,5 +52,5 @@ Deploy on Vercel: https://492test-git-master-mintck22.vercel.app/
 
 ## Contact
 
-[GitHub Profile](https://github.com/mintck22).
-[GitHub Profile](https://github.com/Erzengel792).
+[Chawanluck Kaewmool](https://github.com/mintck22).
+[Tanadol Takunkayan](https://github.com/Erzengel792).
